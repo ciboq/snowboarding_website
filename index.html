@@ -5,16 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="stylesheet.css">
+    <link
+  rel="stylesheet"
+  href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+/>
 </head>
+
 <body>
-    <div class="snowboard_container" id="snowboard_container">
-        <img src="snowboard1.png" id="snowboard1">
-        <p class="snowboard_name">snowboard name</p>
-        <p class="snowboard_desc">snowboard description</p>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="snowboard_container">
+                    <img src="snowboard2.png" id= "capita" class="snowboard">
+                    <input class="progress" type="range" value="0" min="0" max="100"></input>
+              </div>
+              <div class="swiper-slide">
+                <div class="snowboard_container">
+                    <img src="snowboard2.png" id= "capita" class="snowboard">
+                    <input class="progress" type="range" value="0" min="0" max="100"></input>
+              </div>
+            </div>
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
     </div>
 
-        <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
         <script src="script.js"></script>
+        <script type="text/javascript" src="anime.min.js"></script>
+        <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+        <script>
+            var swiper = new Swiper(".mySwiper", {
+              navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+              },
+            });
+          </script>
 
     </body>
 </html>

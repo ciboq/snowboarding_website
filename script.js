@@ -1,30 +1,46 @@
-let snowboard = document.getElementById("#snowboard1");
-
-$(document).ready(function(){
-    var currentMousePos = { x: -1, y: -1 };
-
-let snowboardmove = false;
-let x=0
-let y=0
-
-const boardcontainer = document.getElementById('snowboard_container')
-const snowboard1 = document.getElementById('snowboard1')
-
-boardcontainer.addEventListener("mousemove", e =>{
-    if (snowboardmove === true) {
-        x = e.pageX;
-        y = e.pageY;
-    }
-
-    snowboard1.addEventListener("mousemove", e =>{
-        snowboard1.style.top = e.pageY + 'px';
-        snowboard1.style.left = e.pageX + 'px';
-   })
+fetch('https://api.airtable.com/v0/appwNEs14ZXwbbZ0B/Table%201', {
+  headers: {
+    Authorization: 'Bearer keyU0oov6exskr2Q0',
+  },
 })
+  .then(res => res.json()) 
+  .then(data => {
+    console.log(data); 
 
+    const snowboard_container = document.querySelector('.snowboard_container'); 
+    data.records.forEach(album => {
+      console.log(album); 
 
+      
+snowboard_container.innerHTML += `
 
+`;
+    });
     
+  var progress = document.querySelector('.progress');
+
+  var myAnimation = anime({
+    targets: 'img',
+    translateX: '500px',
+    duration: 2000,
+    easing: 'easeInOutExpo',
+    loop: true,
+    direction: 'alternate',
+    update: function(animation) {
+      progress.value = animation.progress;
+    }
   });
 
-  document.getElementsByTagName('head')
+progress.addEventListener('input', function() { myAnimation.seek(progress.value); });
+
+  
+  });
+  
+
+// let snowboardContainer = document.querySelector(".snowboard_container");
+
+
+//snowboardContainer.addEventListener("mousemove", () => {
+  //snowboard.style.top = `${event.offsetY}px`;
+  //snowboard.style.left = `${event.offsetX}px`;
+//});
