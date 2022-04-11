@@ -29,4 +29,12 @@ body{
     top: 30%;
   }
 
+  .burton {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2%;
+    padding-top: 2%;
+    }
+
 
