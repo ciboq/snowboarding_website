@@ -13,20 +13,16 @@ body{
   
   .snowboard {
     position: relative;
-    background-image:image("snowboard1.png");
     height: 40vh;
     top: 10vh;
     left: 20%;
   }
 
   .progress {
-    position: relative;
-    width: 82%;
+    width: 32%;
+    top: 90vh;
     margin-bottom: 1rem;
-    margin-top: 1rem;
-    margin-left: auto;
-    margin-right: auto;
-    top: 30%;
+    margin-left: 30vw;
   }
 
   .burton {
@@ -37,4 +33,62 @@ body{
     padding-top: 2%;
     }
 
+  .container{
+    padding:20vh;
+    display:flex;
+    flex-direction: row;
+  }
 
+  .snowboard{
+    height:50vh
+  }
+
+  .snowboard_brand{
+    position:absolute;
+    align-content: center;
+    justify-content: center;
+    left: 28vw;
+    margin-top: 20vh;
+    font-family:'skia';
+    font-weight: 900;
+    font-style: black;
+  }
+
+  .snowboard_name{
+    width: 120pt;
+    height: 30pt;
+    position:absolute;
+    left: 28vw;
+    top: 60vh;
+    font-family:'skia';
+    font-weight: 900;
+    font-style: black;
+  }
+
+  .snowboard_description{
+    position:absolute;
+    width: 220pt;
+    height:300pt;
+    height: 20vh;
+    top: 40vh;
+    left: 60vw;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight:lighter;
+    font-style: oblique;
+  }
+
+  .background{
+    position:absolute;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .snowboard_background{
+    position:absolute;
+    width: 100vw;
+    height: 100vh;
+  }
+
+#left{
+  opacity: 0;
+}

@@ -7,53 +7,65 @@ fetch('https://api.airtable.com/v0/appwNEs14ZXwbbZ0B/Table%201', {
   .then(data => {
     arr=data.records.filter(board => board.fields.snowboard_brand === 'Burton')
   console.log(arr)
-    let board1 = arr.slice(-5)
-    let board2 = arr.slice(0,-4)
     
-    var progress = document.querySelector('.progress');
-
-    const snowboard_container_burton1 = document.querySelector('.one');
-    const snowboard_container_burton2 = document.querySelector('.two');
+    
+    const wrapper = document.querySelector('.swiper-wrapper')
 
     data.records
     
-    .forEach((album, index) => {
+    // .filter(board => board.fields.snowboard_brand === 'Burton')
+    
+    .forEach((album, index) => { //.forEach executes a provided function once for each array element
       console.log(album); 
     
   
-  snowboard_container_burton1.innerHTML += `
+  wrapper.innerHTML += `
 
-  <div class="swiper-slide one">
-  <div><img class="snowboard" src="${album.fields.snowboard_pic[0].thumbnails.large.url}", /></div>
+  <div class="swiper-slide slide-${index + 1}">
+  <video class="snowboard_background" type="video/mp4"> src="${album.fields.snowboard_background[0].url}" </video>
+  <div class="container">
+  <img class="snowboard" src="${album.fields.snowboard_pic[0].thumbnails.large.url}" />
+  <div class="snowboard_brand" id="left" style="opacity:0;"> ${album.fields.snowboard_brand} </div>
+  <div class="snowboard_name" id="left" style="opacity:0;"> ${album.fields.snowboard_name} </div>
+  <div class="snowboard_description" id="right"> ${album.fields.snowboard_description} </div>
   </div>
-  
-  `;
-
-
-snowboard_container_burton2.innerHTML += `
-
-<div class="swiper-slide two">
-<div><img class="snowboard" src="${album.fields.snowboard_pic[0].thumbnails.large.url}"/></div>
+  </div>
 </div>
-
 `;
-
-
-
     
 
-anime({
+var controlsProgressE1 = document.querySelector('.progress')
+
+var myAnimation = anime({
   targets: '.snowboard',
-  translateX: '220px',
+  translateX: '500px',
   duration: function() { return anime.random(1000,1400); },
-  delay: function() { return anime.random(300,600); },
-  easing: 'easeInOutExpo',
-  loop: true,
+  // delay: function(el, i) { return i * 100; },
+  easing: 'easeInOutSine',
+  autoplay: false,
   direction: 'alternate',
-  update: function(animation) {
-    progress.value = animation.progress;
-  }
+  // update: function(animation) {
+  //   progress.value = animation.progress;
+  // }
 });
+
+var animationleft = anime({
+  targets: '#left',
+  opacity: [0, 0.3, 0.5, 0.8, 1], 
+})
+
+var animationright = anime({
+  targets: '#right',
+  opacity: [1, 0.8, 0.5, 0.3, 0], 
+})
+
+controlsProgressE1.addEventListener('input', function() {
+  myAnimation.seek(myAnimation.duration * (controlsProgressE1.value / 100));
+  animationleft.seek(animationleft.duration * (controlsProgressE1.value / 100));
+  animationright.seek(animationright.duration * (controlsProgressE1.value / 100));
+
+});
+
 
 });
 
