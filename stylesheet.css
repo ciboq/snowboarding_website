@@ -3,11 +3,21 @@ body{
     height: 100%;
 }
 
-.opener{
+#openerr{
   position: absolute;
   width: 100vw;
   height: 100vh;
   z-index: 2;
+  opacity:1;
+  -webkit-transition: 0.3s ease-out;
+  -moz-transition:  0.3s ease-out;
+  -ms-transition: 0.3s ease-out;
+  -o-transition: 0.3s ease-out;
+  transition: 0.3 ease-out;
+}
+
+#openerr.fade{
+  opacity: 0;
 }
 
 .snowboard_container {
@@ -179,6 +189,7 @@ body{
 
 .swiper-button-next{
   position: absolute;
+  opacity:1;
   --swiper-theme-color: black;
 }
 

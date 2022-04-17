@@ -15,7 +15,7 @@ fetch('https://api.airtable.com/v0/appwNEs14ZXwbbZ0B/Table%201', {
     // .filter(board => board.fields.snowboard_brand === 'Burton')
     
     .forEach((album, index) => { //.forEach executes a provided function once for each array element
-      console.log(album); 
+      console.log(album, index); 
     
   
   wrapper.innerHTML += `
@@ -32,6 +32,8 @@ fetch('https://api.airtable.com/v0/appwNEs14ZXwbbZ0B/Table%201', {
   </div>
 `;
     
+// swiper.activeIndex
+// console.log(swiper.activeIndex)
 
 var controlsProgressE1 = document.querySelector('.progress')
 
@@ -65,15 +67,25 @@ controlsProgressE1.addEventListener('input', function() {
 
 });
 
-var opener = document.querySelector('.opener')
-opener.addEventListener("click", () => {
-opener.style.display = 'none';
-})
+// var opener = document.querySelector('.opener')
+// opener.addEventListener("click", () => {
 
+// })
+
+var clicked=false;
+let opener = document.getElementById('openerr');
+opener.onclick = function myFunction(){ if(!clicked){
+  clicked=true;
+  opener.classList.toggle('fade');
+}}
 
 });
 
   });
+
+  let el = document.getElementById('next');
+  console.log(el.ariaDisabled);
+  el.ariaDisabled = "false"
 
 
 
