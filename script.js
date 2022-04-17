@@ -8,7 +8,6 @@ fetch('https://api.airtable.com/v0/appwNEs14ZXwbbZ0B/Table%201', {
     arr=data.records.filter(board => board.fields.snowboard_brand === 'Burton')
   console.log(arr)
     
-    
     const wrapper = document.querySelector('.swiper-wrapper')
 
     data.records
@@ -22,7 +21,8 @@ fetch('https://api.airtable.com/v0/appwNEs14ZXwbbZ0B/Table%201', {
   wrapper.innerHTML += `
 
   <div class="swiper-slide slide-${index + 1}">
-  <video class="snowboard_background" type="video/mp4"> src="${album.fields.snowboard_background[0].url}" </video>
+  <div class="cover"></div>
+  <!-- <video controls autoplay loop class="snowboard_background" src="${album.fields.snowboard_background[0].url}"></video> -->
   <div class="container">
   <img class="snowboard" src="${album.fields.snowboard_pic[0].thumbnails.large.url}" />
   <div class="snowboard_brand" id="left" style="opacity:0;"> ${album.fields.snowboard_brand} </div>
@@ -30,7 +30,6 @@ fetch('https://api.airtable.com/v0/appwNEs14ZXwbbZ0B/Table%201', {
   <div class="snowboard_description" id="right"> ${album.fields.snowboard_description} </div>
   </div>
   </div>
-</div>
 `;
     
 
@@ -38,7 +37,7 @@ var controlsProgressE1 = document.querySelector('.progress')
 
 var myAnimation = anime({
   targets: '.snowboard',
-  translateX: '500px',
+  translateX: '700px',
   duration: function() { return anime.random(1000,1400); },
   // delay: function(el, i) { return i * 100; },
   easing: 'easeInOutSine',
@@ -65,6 +64,11 @@ controlsProgressE1.addEventListener('input', function() {
   animationright.seek(animationright.duration * (controlsProgressE1.value / 100));
 
 });
+
+var opener = document.querySelector('.opener')
+opener.addEventListener("click", () => {
+opener.style.display = 'none';
+})
 
 
 });
