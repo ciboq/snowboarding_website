@@ -11,13 +11,16 @@
 <body>
   <img class="opener" id="openerr" onclick="myFunction(); this.onclick=null;" src="opener.png">
   
+  <div class="progresscontainer">
+    <input class="progress" type="range" value="0" min="0" max="100"></input>
+  </div>
+
   <div class="swiper mySwiper">
     <div class= "swiper-wrapper">
     </div>
     </div>
-    <div class="swiper-button-next" aria-disabled="false" id="next"></div>
-    <div class="swiper-button-prev" aria-disabled="false" id="prev"></div>
-    <input class="progress" type="range" value="0" min="0" max="100"></input>
+    <div class="swiper-button-next" id="next"></div>
+    <div class="swiper-button-prev" id="prev"></div>
   </div>
 
         <script src="script.js"></script>

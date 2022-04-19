@@ -22,7 +22,7 @@ fetch('https://api.airtable.com/v0/appwNEs14ZXwbbZ0B/Table%201', {
 
   <div class="swiper-slide slide-${index + 1}">
   <div class="cover"></div>
-  <!-- <video controls autoplay loop class="snowboard_background" src="${album.fields.snowboard_background[0].url}"></video> -->
+
   <div class="container">
   <img class="snowboard" src="${album.fields.snowboard_pic[0].thumbnails.large.url}" />
   <div class="snowboard_brand" id="left" style="opacity:0;"> ${album.fields.snowboard_brand} </div>

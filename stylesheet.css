@@ -5,9 +5,9 @@ body{
 
 #openerr{
   position: absolute;
+  z-index: 2;
   width: 100vw;
   height: 100vh;
-  z-index: 2;
   opacity:1;
   -webkit-transition: 0.3s ease-out;
   -moz-transition:  0.3s ease-out;
@@ -36,6 +36,7 @@ body{
   }
 
   .progress {
+    z-index: 2;
     width: 32%;
     margin-bottom: 1rem;
     margin-left: 30vw;
@@ -43,7 +44,8 @@ body{
 
   input.progress[value] {
     position: relative;
-    width: 32%;
+    z-index: 2;
+    width: 52%;
     /* top: 50vh; */
     -webkit-appearance: none;
     background-color: transparent;
@@ -109,6 +111,13 @@ body{
     }
   }
 
+.progresscontainer{
+  z-index: 2;
+  position: absolute;
+  width: 60vw;
+  top: 90vh;
+  left: 5vw;
+}
 
   .burton {
     display:flex;
