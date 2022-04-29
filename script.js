@@ -7,8 +7,21 @@ fetch('https://api.airtable.com/v0/appwNEs14ZXwbbZ0B/Table%201', {
   .then(data => {
     arr=data.records.filter(board => board.fields.snowboard_brand === 'Burton')
   console.log(arr)
-    
+  
+  let snowboardType = 'all';
+
+  function handleDropdown() {
+    // this function runs every time a new element is selected
+    snowboardType = event.target.value; // update our instrumentType variable from line 1 with the new value from the dropdown chang event
+    generateContent(); // after updating the new filter condition, then re-run our content generation
+  }
+
     const wrapper = document.querySelector('.swiper-wrapper')
+    function generateContent(){
+      content.innerHTML = '';
+
+      
+    }
 
     data.records
     
@@ -23,7 +36,6 @@ fetch('https://api.airtable.com/v0/appwNEs14ZXwbbZ0B/Table%201', {
   <div class="swiper-slide slide-${index + 1}">
   <div class="cover"></div>
   <div class="container">
-  <div class="filter">FILTER</div>
   <img class="snowboard" src="${album.fields.snowboard_pic[0].thumbnails.large.url}" />
   <div class="snowboard_brand" id="left" style="opacity:0;"> ${album.fields.snowboard_brand} </div>
   <div class="snowboard_name" id="left" style="opacity:0;"> ${album.fields.snowboard_name} </div>
@@ -34,6 +46,8 @@ fetch('https://api.airtable.com/v0/appwNEs14ZXwbbZ0B/Table%201', {
     
 // swiper.activeIndex
 // console.log(swiper.activeIndex)
+
+});
 
 var controlsProgressE1 = document.querySelector('.progress')
 
@@ -72,16 +86,15 @@ controlsProgressE1.addEventListener('input', function() {
 
 // })
 
+  });
+
+
 var clicked=false;
 let opener = document.getElementById('openerr');
 opener.onclick = function myFunction(){ if(!clicked){
   clicked=true;
   opener.classList.toggle('fade');
 }}
-
-});
-
-  });
 
   let el = document.getElementById('next');
   console.log(el.ariaDisabled);
