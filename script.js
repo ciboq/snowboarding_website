@@ -9,45 +9,49 @@ fetch('https://api.airtable.com/v0/appwNEs14ZXwbbZ0B/Table%201', {
   console.log(arr)
   
   let snowboardType = 'all';
+  
+  document.querySelector('#select').addEventListener('change',()=>{
 
-  function handleDropdown() {
-    // this function runs every time a new element is selected
-    snowboardType = event.target.value; // update our instrumentType variable from line 1 with the new value from the dropdown chang event
-    generateContent(); // after updating the new filter condition, then re-run our content generation
-  }
+
+      // this function runs every time a new element is selected
+      snowboardType = event.target.value; // update our instrumentType variable from line 1 with the new value from the dropdown chang event
+      generateContent(); // after updating the new filter condition, then re-run our content generation
+    
+
+  })
 
     const wrapper = document.querySelector('.swiper-wrapper')
     function generateContent(){
-      content.innerHTML = '';
+      wrapper.innerHTML = '';
 
+      data.records
       
-    }
-
-    data.records
+      .filter(board =>  snowboardType === "all" ? board : board.fields.snowboard_brand === snowboardType)
+      
+      .forEach((album, index) => { //.forEach executes a provided function once for each array element
+        console.log(album, index); 
+      
     
-    // .filter(board => board.fields.snowboard_brand === 'Burton')
-    
-    .forEach((album, index) => { //.forEach executes a provided function once for each array element
-      console.log(album, index); 
-    
+    wrapper.innerHTML += `
   
-  wrapper.innerHTML += `
+    <div class="swiper-slide slide-${index + 1}">
+    <div class="cover"></div>
+    <div class="container">
+    <img class="snowboard" src="${album.fields.snowboard_pic[0].thumbnails.large.url}" />
+    <div class="snowboard_brand" id="left" style="opacity:0;"> ${album.fields.snowboard_brand} </div>
+    <div class="snowboard_name" id="left" style="opacity:0;"> ${album.fields.snowboard_name} </div>
+    <div class="snowboard_description" id="right"> ${album.fields.snowboard_description} </div>
+    </div>
+    </div>
+  `;
+      
+  // swiper.activeIndex
+  // console.log(swiper.activeIndex)
+  
+  });
+      
 
-  <div class="swiper-slide slide-${index + 1}">
-  <div class="cover"></div>
-  <div class="container">
-  <img class="snowboard" src="${album.fields.snowboard_pic[0].thumbnails.large.url}" />
-  <div class="snowboard_brand" id="left" style="opacity:0;"> ${album.fields.snowboard_brand} </div>
-  <div class="snowboard_name" id="left" style="opacity:0;"> ${album.fields.snowboard_name} </div>
-  <div class="snowboard_description" id="right"> ${album.fields.snowboard_description} </div>
-  </div>
-  </div>
-`;
     
-// swiper.activeIndex
-// console.log(swiper.activeIndex)
-
-});
 
 var controlsProgressE1 = document.querySelector('.progress')
 
@@ -74,6 +78,7 @@ var animationright = anime({
   opacity: [1, 0.8, 0.5, 0.3, 0], 
 })
 
+
 controlsProgressE1.addEventListener('input', function() {
   myAnimation.seek(myAnimation.duration * (controlsProgressE1.value / 100));
   animationleft.seek(animationleft.duration * (controlsProgressE1.value / 100));
@@ -85,7 +90,8 @@ controlsProgressE1.addEventListener('input', function() {
 // opener.addEventListener("click", () => {
 
 // })
-
+}
+generateContent()
   });
 
 
